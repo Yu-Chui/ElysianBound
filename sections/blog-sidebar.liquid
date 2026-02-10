@@ -1,0 +1,674 @@
+<style>
+
+  #shopify-section-template--21068483264758__sidebar {
+    margin-top: 60px !important;
+  }
+  
+  /* 或者针对侧边栏容器 */
+  .blog-sidebar,
+  [class*="sidebar"] {
+    margin-top: 20px !important;
+    padding-top: 20px !important;
+  }
+
+/* 轮播容器样式 */
+.article-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;        /* ← 新增:限制最大宽度 */
+  margin: 0 auto;           /* ← 新增:水平居中 */
+}
+
+
+.article-carousel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 15px;
+}
+
+.article-carousel-item {
+  min-width: calc(33.333% - 10px);
+  flex-shrink: 0;
+  text-align: center;  /* ← 这里:整体居中 */
+}
+
+.article-carousel-item .dfsgdfgre1232 {
+  border-bottom: none;
+  margin-bottom: 0;
+  flex-direction: column;  /* ← 这里:垂直排列 */
+  align-items: center;     /* ← 这里:内容居中对齐 */
+  text-align: center;      /* ← 这里:文字居中 */
+}
+
+.article-carousel-item .uiosdg33 {
+  width: 100%;
+  margin-right: 0;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;  /* ← 这里:图片居中 */
+}
+
+.article-carousel-item .dfsgdfgre1232 span {
+  width: 100%;
+  text-align: center;  /* ← 这里:标题文字居中 */
+}
+
+
+/* 导航按钮 */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.carousel-btn {
+  background-color: rgba(214, 49, 133, 1);
+  border: none;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #CD3278;
+  transform: scale(1.1);
+}
+
+.carousel-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 指示器 */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background-color: rgba(214, 49, 133, 1);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.rightsection123{
+  width:50%;
+  margin-left: auto;    /* ← 修改:自动左边距 */
+  margin-right: auto;   /* ← 新增:自动右边距 */
+  font-size:1.4rem;
+  margin-bottom:3%;
+}
+
+
+.toptitle11{
+  margin-bottom: 14px;
+}
+
+.widget-title {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  text-align: center;  /* ← 新增:标题居中 */
+}
+
+.is-divider2 {
+  background-color: rgba(0, 0, 0, .1);
+  display: block;
+  height: 3px;
+  margin: 1em auto;      /* ← 修改:分割线居中 */
+  max-width: 30px;
+  width: 100%;
+  margin-bottom: .5em;
+  margin-top: .5em;
+}
+
+.toptitle11 {
+  margin-bottom: 14px;
+  text-align: center;    /* ← 新增:整个标题区域居中 */
+}
+
+section {
+  text-align: center;    /* ← 新增:section内容居中 */
+}
+
+
+.dfsgdfgre1232{ 
+  text-decoration: none;
+  color: #CD3278;
+  padding-bottom: 7px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+}
+
+.dfsgdfgre1232:last-child{
+  border-bottom:none;
+}
+
+.dfsgdfgre1232:hover span{
+  color:#333;
+}
+
+.dfsgdfgre1232 span{
+  display: block;
+  width:64%;
+}
+
+.dfsgdfgre1232 img{
+  display: block;
+  margin-right: 11px;
+}
+
+.uiosdg33 {
+  margin-right: 3%;
+  width: 31%;
+}
+
+.uiosdg33 img{
+  display:block;
+  max-width:100%;
+}
+
+/* 新增轮播样式 */
+.article-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.article-carousel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 15px;
+}
+
+.article-carousel-item {
+  min-width: calc(33.333% - 10px);
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.article-carousel-item .dfsgdfgre1232 {
+  border-bottom: none;
+  margin-bottom: 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.article-carousel-item .uiosdg33 {
+  width: 100%;
+  margin-right: 0;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.article-carousel-item .dfsgdfgre1232 span {
+  width: 100%;
+  text-align: center;
+}
+
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.carousel-btn {
+  background-color: rgba(214, 49, 133, 1);
+  border: none;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #CD3278;
+  transform: scale(1.1);
+}
+
+.carousel-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background-color: rgba(214, 49, 133, 1);
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .article-carousel-item {
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .article-carousel-item {
+    min-width: 100%;
+  }
+}
+
+.subcribox1{
+  width:80%;
+}
+
+.field4input{
+  background-clip: padding-box;
+  background-image: none;
+  border: 1px solid #dadbdd;
+  border-radius: 7px;
+  color: #606266;
+  font-family: -apple-system, "system-ui", Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  line-height: 1;
+  margin-bottom: 0;
+  width: 100%;
+  padding: 11px 15px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.field4input:focus-visible {
+  outline: none;
+  outline-offset: none;
+  box-shadow: none;
+}
+
+.dsfsdf54{
+  background-color: rgba(214, 49, 133, 1);
+  margin-top: 10px;
+  border-color: rgba(214, 49, 133, 1);
+  color: #ffffff;
+  min-width: 100%;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 8px 20px;
+  position: relative;
+  text-align: center;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.dsfsdf54:hover {
+  background-color: #ffffff;
+  border-color: rgba(214, 49, 133, 1);
+  color: #D63185;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .rightsection123{
+    width:100%;
+    margin-left: 0%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .rightsection123{
+    width:100%; 
+    margin-left:0;
+    font-size: 1.4rem;
+  }
+  .subcribox1{
+    width:100%;
+  }
+}
+</style>
+
+<div class="rightsection123">
+  <!-- About Section -->
+  {% if section.settings.show_about %}
+    <div class="toptitle11">
+      <span class="widget-title">{{ section.settings.about_title }}</span>
+      <div class="is-divider2 small"></div>
+    </div>
+    <section> 
+      <p>{{ section.settings.about_text }}</p>
+    </section>
+    <br/>
+  {% endif %}
+
+  <!-- Newest Posts Section -->
+  <!-- Newest Posts Section -->
+<section> 
+  <span class="widget-title">{{ section.settings.recent_posts_title }}</span>
+  <div class="is-divider2 small"></div>
+  
+  <div class="article-carousel-wrapper">
+    <div id="articleCarousel" class="article-carousel">
+      {%- assign recent_articles = blogs[section.settings.blog].articles | sort: 'published_at' | reverse -%}
+      {% for article in recent_articles limit: section.settings.recent_posts_limit %}
+        <div class="article-carousel-item">
+          <a href="{{ article.url }}" class="dfsgdfgre1232">
+            <div class="uiosdg33">
+              {%- if article.image -%}
+                <img src="{{ article.image.src | image_url: width: 90 }}" 
+                    alt="{{ article.title | escape }}"
+                    width="90"
+                    height="90"
+                    loading="lazy">
+              {%- endif -%}
+            </div>
+            <span>{{ article.title | truncate: 46 | escape }}</span>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <div class="carousel-nav">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">‹</button>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">›</button>
+    </div>
+    
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+</section>    
+<br/>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.getElementById('articleCarousel');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsContainer = document.getElementById('carouselDots');
+  
+  if (!carousel) return;
+  
+  const items = carousel.querySelectorAll('.article-carousel-item');
+  const totalItems = items.length;
+  let currentIndex = 0;
+  
+  function getItemsPerView() {
+    if (window.innerWidth <= 767) return 1;
+    if (window.innerWidth <= 1024) return 3;
+    return 5;
+  }
+  
+  let itemsPerView = getItemsPerView();
+  const totalPages = Math.ceil(totalItems / itemsPerView);
+  
+  for (let i = 0; i < totalPages; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('carousel-dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+  
+  const dots = dotsContainer.querySelectorAll('.carousel-dot');
+  
+  function updateCarousel() {
+    const itemWidth = 100 / itemsPerView;
+    const offset = currentIndex * itemWidth * itemsPerView;
+    carousel.style.transform = `translateX(-${offset}%)`;
+    
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+    
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= totalPages - 1;
+  }
+  
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+  
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < totalPages - 1) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+  
+  window.addEventListener('resize', () => {
+    const newItemsPerView = getItemsPerView();
+    if (newItemsPerView !== itemsPerView) {
+      itemsPerView = newItemsPerView;
+      currentIndex = 0;
+      updateCarousel();
+    }
+  });
+  
+  updateCarousel();
+});
+</script>
+
+  <!-- Categories Section -->
+  {%- if section.settings.show_categories -%}
+  <section> 
+    <span class="widget-title">{{ section.settings.categories_title }}</span>
+    <div class="is-divider2 small"></div>
+    
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'category' -%}
+        <a href="{{ block.settings.category_url }}" class="dfsgdfgre1232">
+          <span>{{ block.settings.category_name }}</span> 
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </section>    
+  <br/>
+  {%- endif -%}
+
+  <!-- Subscription Section -->
+  {%- if section.settings.show_newsletter -%}
+  <section>
+    <span class="widget-title">{{ section.settings.newsletter_title }}</span>
+    <div class="is-divider2 small"></div>
+    
+    {% form 'customer', class: 'subcribox1' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="newsletter-form__field-wrapper">
+        <div class="newsletter-form__button_wzer_fieldBox">
+          <div class="newsletter-form__button_wzer_field">
+            <input
+              id="NewsletterForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="field4input"
+              value="{{ form.email }}"
+              aria-required="true" 
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="Newsletter-error--{{ section.id }}"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="Newsletter-success--{{ section.id }}"
+              {% endif %}
+              placeholder="{{ section.settings.newsletter_placeholder }}"
+              required
+            >
+          </div>
+          <div class="newsletter-form__button_wzer_bottom">
+            <button type="submit" class="dsfsdf54" name="commit" id="Subscribe">
+              <span>{{ section.settings.newsletter_button }}</span>
+            </button>
+          </div>
+        </div>
+        {%- if form.errors -%}
+          <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">There was an error. Please try again.</small>
+        {%- endif -%}
+      </div>
+      {%- if form.posted_successfully? -%}
+        <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>Thanks for subscribing!</h3>
+      {%- endif -%}
+    {% endform %}
+  </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Blog Sidebar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "About Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_about",
+      "label": "Show About Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "about_title",
+      "label": "About Title",
+      "default": "About Us"
+    },
+    {
+      "type": "textarea",
+      "id": "about_text",
+      "label": "About Text",
+      "default": "Welcome to our blog! Here you'll find articles about our products and industry insights."
+    },
+    {
+      "type": "header",
+      "content": "Recent Posts Section"
+    },
+    {
+      "type": "text",
+      "id": "recent_posts_title",
+      "label": "Recent Posts Title",
+      "default": "Newest Posts"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "recent_posts_limit",
+      "label": "Number of Recent Posts",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Categories Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_categories",
+      "label": "Show Categories",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "categories_title",
+      "label": "Categories Title",
+      "default": "Categories"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "Subscription"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email Placeholder",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button",
+      "label": "Button Text",
+      "default": "Subscribe"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "category_url",
+          "label": "Category URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

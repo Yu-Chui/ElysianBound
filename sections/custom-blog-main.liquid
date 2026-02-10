@@ -1,0 +1,641 @@
+<style>
+  
+#shopify-section-template--21068483264758__main,
+.blog-posts,
+.page-width {
+  overflow: visible !important;
+}
+
+.placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #f0f0f0;
+}
+
+  /* 分页样式 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 40px 0;
+}
+
+.pagination__item {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #333;
+  border-radius: 4px;
+}
+
+.pagination__item--current {
+  background-color: #CD3278;
+  color: white;
+  border-color: #CD3278;
+}
+
+.pagination__item:hover {
+  background-color: #f5f5f5;
+}
+
+/* 页面容器 */
+.page-width{
+  width: 100%; 
+  max-width: 1400px; 
+  margin: 0 auto; 
+  padding: 0 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* 文章网格布局 */
+.blog-articles{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* 单个文章卡片 */
+.blog-articles__article {  
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-articles__article:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+/* 图片容器 */
+.article-card__image {
+  overflow: hidden;
+  display: block;
+  height: 280px;
+  position: relative;
+}
+
+.article-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.blog-articles__article:hover .article-card__image img {
+  transform: scale(1.05);
+}
+
+/* 卡片内容区域 */
+.article-card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* 日期和作者信息 */
+.article-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #999;
+  font-weight: 500;
+}
+
+.article-meta span:not(:last-child)::after {
+  content: "|";
+  margin-left: 12px;
+  color: #ddd;
+}
+
+/* 文章标题 */
+.article-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 12px;
+  min-height: 56px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.article-card__title a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-articles__article:hover .article-card__title a {
+  color: #CD3278;
+}
+
+/* 文章摘要 */
+.article-card__excerpt {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+/* READ MORE 按钮 */
+.article-card__button {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.article-card__button:hover {
+  background: #CD3278;
+  transform: translateX(4px);
+}
+
+/* 头部标题区域 */
+.neiwflex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ececec;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+
+.blogtitle1 {
+  font-weight: 700;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pblogurl1{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  color: #CD3278;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pblogurl1:hover {
+  color: #333;
+}
+
+.icon-caret231{
+  transform: rotate(270deg);
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+/* 平板响应式 */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .blog-articles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .article-card__image {
+    height: 240px;
+  }
+}
+
+/* 移动端响应式 */
+@media only screen and (max-width: 767px) {
+  .blog-articles {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .article-card__image {
+    height: 220px;
+  }
+  
+  .article-card__content {
+    padding: 20px;
+  }
+  
+  .blogtitle1 {
+    font-size: 24px;
+  }
+  
+  .article-card__title {
+    font-size: 18px;
+    min-height: auto;
+  }
+}
+
+/* 自定义块样式 */
+.blog-custom-blocks {
+  margin-top: 40px;
+}
+
+.custom-text-block {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.custom-image-block {
+  margin-bottom: 20px;
+}
+
+.custom-image-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.custom-banner {
+  position: relative;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-banner img {
+  width: 100%;
+  height: auto;
+}
+
+.banner-content {
+  padding: 30px;
+  text-align: center;
+}
+
+.banner-button {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  margin-top: 15px;
+  border-radius: 4px;
+}
+</style>
+
+{%- paginate blog.articles by section.settings.articles_per_page -%}
+<div class="page-width" style="background-color: {{ section.settings.background_color }};">
+  
+  <!-- 动态样式 -->
+  <style>
+    .pblogurl1, 
+    .blog-articles__article:hover .article-card__title a {
+      color: {{ section.settings.accent_color }};
+    }
+    .pagination__item--current,
+    .article-card__button:hover {
+      background-color: {{ section.settings.accent_color }};
+      border-color: {{ section.settings.accent_color }};
+    }
+  </style>
+
+  <header class="section-header neiwflex">
+    <span class="blogtitle1">{{ section.settings.blog_title | default: blog.title }}</span>
+    {% if section.settings.show_view_all %}
+      <a href="{{ blog.url }}" class="pblogurl1">
+        {{ section.settings.view_all_text }}
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret icon-caret231" viewBox="0 0 10 6">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+        </svg>
+      </a>
+    {% endif %}
+  </header>
+
+  <div class="main-blog">
+    <div class="blog-articles">
+      {%- for article in blog.articles -%}
+        <article class="blog-articles__article">
+          <a href="{{ article.url }}" class="article-card__image">
+            {%- if article.image -%}
+              <img 
+                src="{{ article.image.src | image_url: width: 600 }}" 
+                alt="{{ article.image.alt | escape }}"
+                width="600"
+                height="400"
+                loading="lazy">
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+          
+          <div class="article-card__content">
+            {% if section.settings.show_date or section.settings.show_author %}
+              <div class="article-meta">
+                {% if section.settings.show_date %}
+                  <span class="article-date">{{ article.published_at | date: "%B %d, %Y" }}</span>
+                {% endif %}
+                {% if section.settings.show_author and article.author %}
+                  <span class="article-author">{{ article.author }}</span>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <h3 class="article-card__title">
+              <a href="{{ article.url }}">
+                {{ article.title | escape }}
+              </a>
+            </h3>
+
+            {% if section.settings.show_excerpt %}
+              <div class="article-card__excerpt">
+                {{ article.excerpt_or_content | strip_html | truncatewords: section.settings.excerpt_length }}
+              </div>
+            {% endif %}
+
+            <a href="{{ article.url }}" class="article-card__button">
+              {{ section.settings.button_text | default: "Read More" }}
+            </a>
+          </div>
+        </article>
+      {%- endfor -%}     
+    </div>
+  </div>
+
+  <!-- 自定义块区域 -->
+  {% if section.blocks.size > 0 %}
+    <div class="blog-custom-blocks">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'text_block' %}
+            <div class="custom-text-block" style="text-align: {{ block.settings.text_alignment }};" {{ block.shopify_attributes }}>
+              {{ block.settings.content }}
+            </div>
+          
+          {% when 'image_block' %}
+            <div class="custom-image-block block-width-{{ block.settings.image_width }}" {{ block.shopify_attributes }}>
+              {% if block.settings.image %}
+                {% if block.settings.link %}
+                  <a href="{{ block.settings.link }}">
+                {% endif %}
+                  <img 
+                    src="{{ block.settings.image | image_url: width: 1200 }}"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    width="1200"
+                    height="800"
+                    loading="lazy">
+                {% if block.settings.link %}
+                  </a>
+                {% endif %}
+              {% endif %}
+            </div>
+          
+          {% when 'banner' %}
+            <div class="custom-banner" {{ block.shopify_attributes }}>
+              {% if block.settings.banner_image %}
+                <img 
+                  src="{{ block.settings.banner_image | image_url: width: 1400 }}" 
+                  alt="{{ block.settings.banner_title | escape }}"
+                  width="1400"
+                  height="600"
+                  loading="lazy">
+              {% endif %}
+              <div class="banner-content">
+                {% if block.settings.banner_title != blank %}
+                  <h2>{{ block.settings.banner_title }}</h2>
+                {% endif %}
+                {{ block.settings.banner_text }}
+                {% if block.settings.banner_link != blank %}
+                  <a href="{{ block.settings.banner_link }}" class="banner-button">
+                    {{ block.settings.button_text }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</div>
+
+{% if paginate.pages > 1 %}
+  <nav class="pagination" role="navigation">
+    {% if paginate.previous %}
+      <a href="{{ paginate.previous.url }}" class="pagination__item pagination__item--prev">
+        ← Previous
+      </a>
+    {% endif %}
+
+    {% for part in paginate.parts %}
+      {% if part.is_link %}
+        <a href="{{ part.url }}" class="pagination__item">{{ part.title }}</a>
+      {% else %}
+        {% if part.title == paginate.current_page %}
+          <span class="pagination__item pagination__item--current">{{ part.title }}</span>
+        {% else %}
+          <span class="pagination__item">{{ part.title }}</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if paginate.next %}
+      <a href="{{ paginate.next.url }}" class="pagination__item pagination__item--next">
+        Next →
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}
+
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "博客主内容",
+  "settings": [
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "每页文章数",
+      "min": 6,
+      "max": 24,
+      "step": 3,
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "背景颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "强调色(链接和按钮)",
+      "default": "#CD3278"
+    },
+    {
+      "type": "text",
+      "id": "blog_title",
+      "label": "自定义博客标题",
+      "info": "留空则使用博客默认标题"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "显示'查看全部'链接",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "'查看全部'按钮文字",
+      "default": "More"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "文章按钮文字",
+      "default": "Read More"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "显示发布日期",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "显示作者",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "显示文章摘要",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "excerpt_length",
+      "label": "摘要字数",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "文本块",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "内容",
+          "default": "<p>添加自定义文本内容</p>"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "文本对齐",
+          "options": [
+            { "value": "left", "label": "左对齐" },
+            { "value": "center", "label": "居中" },
+            { "value": "right", "label": "右对齐" }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "image_block",
+      "name": "图片块",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "图片"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "链接地址"
+        },
+        {
+          "type": "select",
+          "id": "image_width",
+          "label": "图片宽度",
+          "options": [
+            { "value": "full", "label": "全宽" },
+            { "value": "medium", "label": "中等" },
+            { "value": "small", "label": "小" }
+          ],
+          "default": "full"
+        }
+      ]
+    },
+    {
+      "type": "banner",
+      "name": "横幅广告",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "横幅图片"
+        },
+        {
+          "type": "text",
+          "id": "banner_title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "banner_text",
+          "label": "描述文字"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "按钮链接"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "按钮文字",
+          "default": "了解更多"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "自定义博客主内容"
+    }
+  ]
+}
+{% endschema %}
