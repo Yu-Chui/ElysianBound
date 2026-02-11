@@ -1,5 +1,158 @@
 
 
+<style>
+  /* Style for the entire section */
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    margin-top: 0;
+  }
+  
+  /* Style for the section content */
+  #shopify-section-{{ section.id }} .section {
+    position: relative;
+    min-height: calc(100vh - var(--header-height) + 20px);
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 40px !important;
+  }
+  
+  /* Apply background and padding to the content wrapper */
+  #shopify-section-{{ section.id }} .section-content-wrapper {
+    background-color: transparent !important;
+    padding: 40px 10px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    max-width: 1600px !important;
+    width: 100% !important;
+  }
+  
+  /* Link styles */
+  #shopify-section-{{ section.id }} a {
+    text-decoration: none !important;
+    border-bottom: 1px solid currentColor !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  #shopify-section-{{ section.id }} a:hover {
+    border-bottom-color: currentColor !important;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .section-content-wrapper {
+      padding: 24px 12px !important;
+      max-width: 100% !important;
+    }
+  }
+</style>
+
+{% if section.settings.background_image %}
+  <style>
+    /* Style for the section content with background */
+    #shopify-section-{{ section.id }} .section {
+      background-color: rgba(0, 0, 0, 0.2) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+    
+    /* Style for the section background */
+    #shopify-section-{{ section.id }} .section-background {
+      background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    
+    /* Apply styles to all text elements for pages with background */
+    #shopify-section-{{ section.id }} h1,
+    #shopify-section-{{ section.id }} h2,
+    #shopify-section-{{ section.id }} h3,
+    #shopify-section-{{ section.id }} h4,
+    #shopify-section-{{ section.id }} h5,
+    #shopify-section-{{ section.id }} h6,
+    #shopify-section-{{ section.id }} p,
+    #shopify-section-{{ section.id }} ul,
+    #shopify-section-{{ section.id }} ol,
+    #shopify-section-{{ section.id }} li,
+    #shopify-section-{{ section.id }} a {
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    /* Heading styles for pages with background */
+    #shopify-section-{{ section.id }} h1,
+    #shopify-section-{{ section.id }} h2,
+    #shopify-section-{{ section.id }} h3,
+    #shopify-section-{{ section.id }} h4,
+    #shopify-section-{{ section.id }} h5,
+    #shopify-section-{{ section.id }} h6 {
+      line-height: 1.2 !important;
+      margin-bottom: 16px !important;
+      font-weight: 600 !important;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    #shopify-section-{{ section.id }} h1 {
+      font-size: 2.5rem !important;
+      margin-top: 0 !important;
+      margin-bottom: 24px !important;
+    }
+    
+    /* Paragraph styles for pages with background */
+    #shopify-section-{{ section.id }} p {
+      margin-bottom: 16px !important;
+      line-height: 1.6 !important;
+      font-size: 16px !important;
+    }
+    
+    /* List styles for pages with background */
+    #shopify-section-{{ section.id }} ul,
+    #shopify-section-{{ section.id }} ol {
+      margin-bottom: 16px !important;
+      padding-left: 24px !important;
+    }
+    
+    #shopify-section-{{ section.id }} li {
+      margin-bottom: 8px !important;
+    }
+    
+    /* Link styles for pages with background */
+    #shopify-section-{{ section.id }} a {
+      color: #f0e6ff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    #shopify-section-{{ section.id }} a:hover {
+      color: #ffffff !important;
+      border-bottom-color: #ffffff !important;
+    }
+    
+    /* Responsive adjustments for pages with background */
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} h1 {
+        font-size: 2rem !important;
+      }
+      
+      #shopify-section-{{ section.id }} p {
+        font-size: 15px !important;
+      }
+      
+      #shopify-section-{{ section.id }} .section-content-wrapper {
+        padding: 24px 12px !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+{% endif %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div class="section page-width-content color-{{ section.settings.color_scheme }}">
   <div
@@ -66,6 +219,11 @@
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "背景图片"
     },
     {
       "type": "header",

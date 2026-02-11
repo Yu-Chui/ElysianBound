@@ -23,6 +23,9 @@
   elsif section.settings.enable_transparent_header_collection and template.name == 'collection'
     assign transparent = 'always'
     assign transparent_color_scheme = section.settings.collection_color_scheme
+  elsif section.settings.enable_transparent_header_home
+    assign transparent = 'always'
+    assign transparent_color_scheme = section.settings.home_color_scheme
   endif
 
   if section.settings.enable_sticky_header == 'always'
@@ -418,6 +421,13 @@
       }
     }
 
+    /* 当header透明时，悬停菜单也保持透明 */
+    &[transparent]:has(.mega-menu__list:hover),
+    &[transparent]:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'], [data-animating])),
+    &[transparent]:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])) {
+      --header-bg-color: transparent !important; /* 保持透明背景 */
+    }
+
     .header__row {
       /* Slower transition for "out" animation */
       transition: color var(--animation-values-slow), border-color var(--animation-values-slow),
@@ -496,6 +506,13 @@
 
     /* will default to bg from its color scheme unless --header-bg-color is transparent */
     background-color: var(--header-bg-color, var(--color-background));
+  }
+
+  /* 透明header悬停菜单时保持透明 */
+  .header[transparent]:has(.mega-menu__list:hover) .header__row,
+  .header[transparent]:has(.menu-list__link[aria-haspopup]:is(:hover, [aria-expanded='true'], [data-animating])) .header__row,
+  .header[transparent]:has(.menu-list__list-item[slot='overflow'] .menu-list__link:is(:hover, [aria-expanded='true'], [data-animating])) .header__row {
+    background-color: transparent !important;
   }
 
   .header__row--top:not(.divider--page-width),

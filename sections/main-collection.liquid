@@ -24,6 +24,17 @@
 
 {% comment %} We always render this full-width, as the child blocks have width: page/full settings {% endcomment %}
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+{% if section.settings.background_image %}
+  <style>
+    #shopify-section-{{ section.id }} {
+      background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+  </style>
+{% endif %}
 <results-list
   class="section product-grid-container color-{{ section.settings.color_scheme }}"
   style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
@@ -326,6 +337,11 @@
       "step": 1,
       "unit": "px",
       "default": 8
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "背景图片"
     }
   ],
   "presets": []

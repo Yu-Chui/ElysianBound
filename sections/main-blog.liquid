@@ -8,6 +8,17 @@
 
 <blog-posts-list section-id="{{ section.id }}">
   <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  {% if section.settings.background_image %}
+    <style>
+      #shopify-section-{{ section.id }} {
+        background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+    </style>
+  {% endif %}
   <div
     class="
       section
@@ -176,6 +187,11 @@
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "背景图片"
     },
     {
       "type": "header",
