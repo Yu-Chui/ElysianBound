@@ -374,7 +374,7 @@
     background-color: #ffffff !important; /* 仅外层白色背景 */
     border: none !important; /* 无边框 */
     box-shadow: none !important; /* 无阴影（消除模糊残留） */
-    padding: 15px 25px !important; /* 外层统一内边距 */
+    padding: 0 !important; /* 无padding */
     margin: 0 !important; /* 无外边距 */
     clip-path: none; /* 无裁剪 */
 
@@ -418,23 +418,6 @@
     background-color: transparent !important; /* 内层透明，仅外层有背景 */
     width: 100% !important;
     display: block !important; /* 垂直布局 */
-  }
-
-  /* 溢出菜单内层（保留） */
-  .overflow-menu::part(overflow) {
-    --menu-top-level-font-size: var(--font-size--xlarge);
-    display: grid;
-    grid-template-columns: var(--full-page-grid-with-margins);
-  }
-
-  .overflow-menu::part(overflow-list) {
-    --submenu-content-opacity: 0;
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(auto, 200px) 1fr;
-    grid-template-areas: 'left right';
-    grid-template-rows: max-content;
-    grid-gap: 0;
   }
 
   /* 更多菜单项样式（保留） */
@@ -483,14 +466,6 @@
     }
   }
 
-  .header-menu[data-overflow-expanded='true'] .menu-list__list-item:where([slot='overflow']) .menu-list__link {
-    --submenu-content-opacity: 1;
-  }
-
-  .menu-list__list-item:where([slot='overflow']):has([data-animating]) > .menu-list__link {
-    --submenu-content-opacity: 0;
-  }
-
   /* 子菜单链接样式（统一，解决文字不居中） */
   .mega-menu__link {
     font-family: var(--menu-child-font-family);
@@ -504,7 +479,7 @@
     text-decoration: none;
     display: block !important;
     text-align: center !important; /* 强制文字居中 */
-    padding: 8px 0 !important; /* 仅垂直间距，水平靠外层padding */
+    padding: 0 !important; /* 无padding */
     margin: 0 !important;
     width: 100% !important; /* 占满容器宽度，确保居中 */
     transition: color var(--animation-speed) var(--animation-easing);
