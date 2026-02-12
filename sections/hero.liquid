@@ -547,7 +547,8 @@
 
   .hero {
     position: relative;
-    min-height: calc(var(--hero-min-height) - var(--hero-height-offset));
+    min-height: calc(var(--hero-min-height) - var(--header-group-height, 0));
+    margin-top: var(--header-group-height, 0);
   }
 
   .hero[data-shopify-visual-preview] {
@@ -564,6 +565,10 @@
     align-items: var(--vertical-alignment-mobile);
     justify-content: var(--horizontal-alignment);
     z-index: var(--layer-base);
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    --padding-block-start: 0 !important;
+    --padding-block-end: 0 !important;
 
     @media screen and (min-width: 750px) {
       align-items: var(--vertical-alignment);

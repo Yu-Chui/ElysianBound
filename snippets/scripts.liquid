@@ -24,9 +24,27 @@
       "@theme/component-quantity-selector": "{{ 'component-quantity-selector.js' | asset_url }}",
       "@theme/comparison-slider": "{{ 'comparison-slider.js' | asset_url }}",
       "@theme/sticky-add-to-cart": "{{ 'sticky-add-to-cart.js' | asset_url }}",
-      "@theme/fly-to-cart": "{{ 'fly-to-cart.js' | asset_url }}"
+      "@theme/fly-to-cart": "{{ 'fly-to-cart.js' | asset_url }}",
+      "@theme/mobile-optimized": "{{ 'mobile-optimized.js' | asset_url }}"
     }
   }
+</script>
+
+<!-- 设备检测和条件加载 -->
+<script>
+  const isMobile = window.innerWidth <= 768;
+  const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+  const isDesktop = window.innerWidth > 1024;
+  
+  // 存储设备类型
+  window.Theme = window.Theme || {};
+  window.Theme.device = {
+    isMobile,
+    isTablet,
+    isDesktop
+  };
+  
+  // 移动设备优化资源将在页面底部静态加载
 </script>
 
 <script
@@ -244,14 +262,16 @@
   src="{{ 'volume-pricing-info.js' | asset_url }}"
   type="module"
   fetchpriority="low"
-></script>
+>
+</script>
 
 {% if localization.available_countries.size > 1 or localization.available_languages.size > 1 %}
   <script
     src="{{ 'localization.js' | asset_url }}"
     type="module"
     fetchpriority="low"
-  ></script>
+  >
+  </script>
 {% endif %}
 
 {% if template == 'product' or template.name == 'product' or request.page_type == 'product' %}
@@ -259,12 +279,14 @@
     src="{{ 'fly-to-cart.js' | asset_url }}"
     type="module"
     fetchpriority="low"
-  ></script>
+  >
+  </script>
   <script
     src="{{ 'sticky-add-to-cart.js' | asset_url }}"
     type="module"
     fetchpriority="low"
-  ></script>
+  >
+  </script>
   <script type="module">
     import { RecentlyViewed } from '@theme/recently-viewed-products';
     RecentlyViewed.addProduct('{{ product.id }}');
@@ -276,13 +298,15 @@
     src="{{ 'product-card-link.js' | asset_url }}"
     type="module"
     fetchpriority="low"
-  ></script>
+  >
+  </script>
 {% endif %}
 
 <script
   src="{{ 'auto-close-details.js' | asset_url }}"
   defer="defer"
-></script>
+>
+</script>
 
 <script>
   const Theme = {
@@ -304,7 +328,26 @@
       search_url: '{{ routes.search_url }}',
     },
     template: {
-      name: '{{ template }}',
-    },
+    name: '{{ template }}',
+  },
+};
+
+  // 检测设备类型
+  const isMobile = window.innerWidth <= 768;
+  
+  // 存储设备类型
+  window.Theme = window.Theme || {};
+  window.Theme.device = {
+    isMobile,
+    isTablet: window.innerWidth > 768 && window.innerWidth <= 1024,
+    isDesktop: window.innerWidth > 1024
   };
+</script>
+
+<!-- 移动设备优化脚本 -->
+<script
+  src="{{ 'mobile-optimized.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+>
 </script>
