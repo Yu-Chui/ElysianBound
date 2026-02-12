@@ -278,7 +278,8 @@ function adjustProductsHeadingPosition() {
         console.log('找到Products标题，开始调整位置:', heading);
         
         // 设置固定的顶部边距，确保Products标题显示在标头下方
-        const fixedMarginTop = 30; // 调整为更小的间距，让标题更靠近header
+        const headerHeight = 60; // header的高度
+        const fixedMarginTop =  20; // 添加20px的额外间距
         console.log('使用固定顶部边距:', fixedMarginTop + 'px');
         
         // 应用固定的顶部边距
@@ -303,6 +304,192 @@ function adjustProductsHeadingPosition() {
     });
   }
 }
+
+// 静态调整商品界面位置，避免与标头重合
+function adjustProductLayoutOnMobile() {
+  // 检测是否为移动设备
+  if (window.innerWidth <= 768) {
+    console.log('检测到移动设备，静态调整商品界面位置');
+    
+    // 根据标头尺寸（320x60）设置固定的顶部边距
+    const headerHeight = 60; // 标头高度
+    const additionalSpace = 20; // 额外空间
+    const totalMarginTop = headerHeight + additionalSpace;
+    console.log('标头高度:', headerHeight + 'px, 总顶部边距:', totalMarginTop + 'px');
+    
+    // 调整商品信息区域
+    const productInformation = document.querySelector('.product-information');
+    if (productInformation) {
+      productInformation.style.marginTop = totalMarginTop + 'px';
+      productInformation.style.paddingTop = '20px';
+      productInformation.style.position = 'relative';
+      productInformation.style.zIndex = '1';
+      productInformation.style.transition = 'none'; // 禁用过渡效果，避免闪烁
+      console.log('已静态调整商品信息区域，添加固定顶部边距:', totalMarginTop + 'px');
+    }
+    
+    // 调整媒体库区域
+    const mediaGallery = document.querySelector('.media-gallery');
+    if (mediaGallery) {
+      mediaGallery.style.marginTop = '0';
+      mediaGallery.style.position = 'relative';
+      mediaGallery.style.zIndex = '1';
+      console.log('已静态调整媒体库区域，重置顶部边距为0');
+    }
+    
+    // 调整产品详情区域
+    const productDetails = document.querySelector('.product-details');
+    if (productDetails) {
+      productDetails.style.position = 'static';
+      productDetails.style.top = 'auto';
+      productDetails.style.marginTop = '0';
+      console.log('已静态调整产品详情区域，移除粘性定位');
+    }
+    
+    // 调整产品详情包装器
+    const productDetailsWrapper = document.querySelector('.product-information__details-wrapper');
+    if (productDetailsWrapper) {
+      productDetailsWrapper.style.position = 'static';
+      productDetailsWrapper.style.top = 'auto';
+      productDetailsWrapper.style.alignSelf = 'auto';
+      productDetailsWrapper.style.zIndex = '1';
+      console.log('已静态调整产品详情包装器，移除粘性定位');
+    }
+    
+    // 调整产品信息网格
+    const productGrid = document.querySelector('.product-information__grid');
+    if (productGrid) {
+      productGrid.style.position = 'relative';
+      productGrid.style.zIndex = '1';
+      console.log('已静态调整产品信息网格，确保正确的层级关系');
+    }
+    
+    // 分离并重新排序产品描述
+    separateAndReorderProductDescription();
+    
+    // 修复颜色选择器宽度问题
+    fixColorSwatchesWidth();
+    
+    // 修复 Shopify 粘性购物栏，使其始终固定显示
+    fixShopifyStickyBar();
+  }
+}
+
+// 分离并重新排序产品描述
+function separateAndReorderProductDescription() {
+  // 查找媒体区域
+  const mediaArea = document.querySelector('.product-information__media');
+  if (!mediaArea) return;
+  
+  // 查找产品描述元素
+  const descriptionElement = mediaArea.querySelector('.product-description-below-media');
+  if (!descriptionElement) return;
+  
+  // 克隆产品描述元素
+  const descriptionClone = descriptionElement.cloneNode(true);
+  descriptionClone.classList.add('product-description-container');
+  
+  // 查找产品信息网格
+  const productGrid = document.querySelector('.product-information__grid');
+  if (!productGrid) return;
+  
+  // 查找产品详情包装器
+  const detailsWrapper = document.querySelector('.product-information__details-wrapper');
+  if (!detailsWrapper) return;
+  
+  // 从媒体区域移除原始描述
+  descriptionElement.remove();
+  
+  // 使用flexbox重新排序元素
+  productGrid.style.display = 'flex';
+  productGrid.style.flexDirection = 'column';
+  
+  // 设置元素顺序
+  const mediaAreaInGrid = productGrid.querySelector('.product-information__media');
+  if (mediaAreaInGrid) {
+    mediaAreaInGrid.style.order = '0';
+  }
+  
+  detailsWrapper.style.order = '1';
+  
+  // 将克隆的描述添加到网格中
+  productGrid.appendChild(descriptionClone);
+  descriptionClone.style.order = '2';
+  
+  console.log('已分离并重新排序产品描述，产品详情现在显示在产品描述之前');
+}
+
+// 修复颜色选择器宽度问题
+function fixColorSwatchesWidth() {
+  // 查找颜色选择器元素
+  const colorSwatches = document.querySelector('[name="orichi-swatches"]');
+  if (colorSwatches) {
+    // 移除过小的max-width
+    colorSwatches.style.maxWidth = '100%';
+    colorSwatches.style.width = '100%';
+    console.log('已修复颜色选择器宽度，设置为100%');
+  }
+  
+  // 同时修复颜色选择器内部元素的宽度
+  const swatchesContainer = document.querySelector('.orichi-swatches-template-11723524309238');
+  if (swatchesContainer) {
+    swatchesContainer.style.maxWidth = '100%';
+    swatchesContainer.style.width = '100%';
+  }
+  
+  // 修复swiper容器宽度
+  const swiperContainer = document.querySelector('.orichi-swatches-swiper');
+  if (swiperContainer) {
+    swiperContainer.style.maxWidth = '100%';
+    swiperContainer.style.width = '100%';
+  }
+}
+
+// 修复 Shopify 粘性购物栏，使其始终固定显示
+function fixShopifyStickyBar() {
+  // 检测是否为移动设备
+  if (window.innerWidth > 768) return;
+  
+  // 查找 Shopify 自带的粘性购物栏
+  const stickyBar = document.querySelector('.sticky-add-to-cart__bar');
+  if (!stickyBar) return;
+  
+  // 设置购物栏为始终固定显示
+  stickyBar.style.position = 'fixed';
+  stickyBar.style.bottom = '0';
+  stickyBar.style.left = '0';
+  stickyBar.style.right = '0';
+  stickyBar.style.zIndex = '9999';
+  stickyBar.style.transform = 'translateY(0)';
+  stickyBar.style.visibility = 'visible';
+  stickyBar.style.opacity = '1';
+  
+  // 设置 data-stuck 属性为 true，表示已固定
+  stickyBar.setAttribute('data-stuck', 'true');
+  
+  // 移除可能的滚动监听事件
+  // 由于我们无法直接访问 Shopify 的内部代码，我们可以通过覆盖样式来确保购物栏始终显示
+  
+  // 添加一个样式规则，确保购物栏不会被隐藏
+  const style = document.createElement('style');
+  style.textContent = `
+    .sticky-add-to-cart__bar {
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      transform: translateY(0) !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      z-index: 9999 !important;
+    }
+  `;
+  document.head.appendChild(style);
+  
+  console.log('已修复 Shopify 粘性购物栏，使其始终固定显示');
+}
+
+
 
 // 优化导航菜单
 function optimizeNavigation() {
@@ -437,10 +624,19 @@ function initMobileOptimization() {
   // 调整Products标题位置
   adjustProductsHeadingPosition();
   
+  // 静态调整商品界面位置，避免与标头重合
+  adjustProductLayoutOnMobile();
+  
   // 添加触摸波纹效果到按钮
   const buttons = document.querySelectorAll('.button, .menu-drawer__menu-item');
   buttons.forEach(function(button) {
     button.classList.add('touch-ripple');
+  });
+  
+  // 添加窗口大小改变事件监听器
+  window.addEventListener('resize', function() {
+    adjustProductsHeadingPosition();
+    adjustProductLayoutOnMobile();
   });
 }
 

@@ -77,17 +77,6 @@
 %}
 
 <div class="section-background color-{{ settings.color_scheme }}"></div>
-{% if settings.background_image %}
-  <style>
-    #shopify-section-{{ section_id }} {
-      background-image: url('{{ settings.background_image | image_url: width: 2000 }}');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-  </style>
-{% endif %}
 <div
   class="product-information section section--{{ content_width }} spacing-style color-{{ settings.color_scheme }} relative"
   style="{% render 'spacing-style', settings: settings %} --gap: {{ settings.gap }}px;"
