@@ -48,6 +48,7 @@
     flex-direction: row;
     align-items: center;
     position: relative;
+    width: 100%;
 
     @media screen and (max-width: 749px) {
       grid-column: 1 / -1;
@@ -57,8 +58,8 @@
   .announcement-bar__slides {
     display: grid;
     grid: [stack] auto / [stack] auto;
-    width: calc(100% - var(--button-size) * 2);
-    max-width: 680px;
+    width: 100%;
+    max-width: 100%;
     margin-inline: auto;
   }
 
