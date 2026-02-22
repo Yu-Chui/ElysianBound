@@ -90,13 +90,53 @@
   .media-block__media {
     height: var(--media-height-mobile, auto);
     object-fit: var(--image-position, 'cover');
-    object-position: center center;
+    object-position: right center;
     width: 100%;
 
     @media screen and (min-width: 750px) {
       height: 100%;
       position: absolute;
     }
+  }
+
+  .media-block--contain {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: auto !important;
+    min-height: 0;
+  }
+
+  .media-block--contain .media-block__media {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: static;
+  }
+
+  /* Override grid layout for contain mode to allow auto height */
+  .media-with-content .media-block--contain {
+    grid-area: media / media / media / media;
+    height: auto !important;
+  }
+
+  /* Override media height for contain mode */
+  .media-block--contain {
+    --media-height: auto !important;
+    --media-height-mobile: auto !important;
+  }
+
+  /* Ensure media extends to screen edges in media-with-content sections */
+  .section--full-width.media-with-content .media-block {
+    width: 100%;
+  }
+
+  .media-with-content--media-extend .media-block {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   deferred-media[class].media-block__media

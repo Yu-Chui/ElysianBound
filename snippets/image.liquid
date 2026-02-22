@@ -23,7 +23,7 @@
   {% assign style_value = style | default: '' %}
 
   {% if unset_image_tag %}
-    {% assign style_value = style_value | append: 'object-position: inherit;' %}
+    {% assign style_value = style_value | append: 'object-position: right center;' %}
   {% endif %}
 
   {{ image | image_url: height: image_height | image_tag: class: class, srcset: image_srcset, style: style_value }}
